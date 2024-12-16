@@ -28,7 +28,7 @@
             <ion-card-content>
               <ion-avatar>
                 <!-- Nếu ảnh bị lỗi hoặc không tồn tại, sẽ hiển thị ảnh mặc định -->
-                <img [src]="'http://192.168.1.18/medic1/backend/' + patient.image_url" (error)="this.src='assets/default-avatar.png'" alt="Patient Image" width="100">
+                <img [src]="'http://x.x.x.x/medic1/backend/' + patient.image_url" (error)="this.src='assets/default-avatar.png'" alt="Patient Image" width="100">
               </ion-avatar>
               <h2>{{ patient.name }}</h2>
               <p class="specialty">Age: {{ patient.age }}</p>
