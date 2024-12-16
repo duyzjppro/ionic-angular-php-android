@@ -1,0 +1,52 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Elise Hospital</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="chatbubbles-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <h1>Danh sách bệnh nhân</h1>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="3" *ngFor="let patient of patients">
+          <ion-card class="patient-card">
+            <ion-card-content>
+              <ion-avatar>
+                <!-- Nếu ảnh bị lỗi hoặc không tồn tại, sẽ hiển thị ảnh mặc định -->
+                <img [src]="'http://192.168.1.18/medic1/backend/' + patient.image_url" (error)="this.src='assets/default-avatar.png'" alt="Patient Image" width="100">
+              </ion-avatar>
+              <h2>{{ patient.name }}</h2>
+              <p class="specialty">Age: {{ patient.age }}</p>
+              <p class="phone">Phone: {{ patient.phone }}</p>
+              <p class="city">City: {{ patient.city }}</p>
+              
+              <!-- Add Edit Button -->
+              <ion-button fill="clear" [routerLink]="['/edit-patient', patient.id]">
+                <ion-icon name="create-outline"></ion-icon> Edit
+              </ion-button>
+              
+              <ion-button expand="full" color="secondary" [routerLink]="['/view-medical-records', patientId]">
+                Hồ sơ bệnh án
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-content class="ion-padding">
+  <form (ngSubmit)="addDoctor()">
+    <h2>Thông Tin Cơ Bản</h2>
+    <p class="description">Nhập thông tin chi tiết bác sĩ...</p>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6">
+          <ion-item>
+            <ion-label position="floating">UserID</ion-label>
+            <ion-select [(ngModel)]="userid" name="userid" required>
+              <ion-select-option *ngFor="let user of users" [value]="user.id">
+                {{ user.username }} 
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Họ và Tên</ion-label>
+            <ion-input [(ngModel)]="name" name="name" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Chuyên ngành</ion-label>
+            <ion-input [(ngModel)]="specialty" name="specialty" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Số điện thoại</ion-label>
+            <ion-input [(ngModel)]="phone" name="phone" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- File Upload Section -->
+    <div class="file-upload-container">
+      <input type="file" id="file-upload" (change)="onFileChange($event)" accept="image/*" hidden>
+      <label for="file-upload" class="file-upload-label">
+        <ion-icon name="cloud-upload-outline" size="large"></ion-icon>
+        <ion-img *ngIf="previewUrl" [src]="previewUrl" alt="Doctor Image Preview" class="preview-image"></ion-img>
+        <p *ngIf="!previewUrl">Drag and drop a file here or click</p>
+      </label>
+    </div>
+
+    <!-- Submit Button Section -->
+    <div class="button-group">
+      <ion-button expand="full" type="submit">Thêm Bác Sĩ</ion-button>
+      <ion-button type="button" expand="block" fill="outline" (click)="onCancel()">Hủy</ion-button>
+    </div>
+  </form>
+</ion-content>

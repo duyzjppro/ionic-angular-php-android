@@ -1,0 +1,130 @@
+<ion-menu side="start" contentId="main-content" [inert]="isMenuOpen">  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Trang Chủ</ion-label>
+      </ion-item>
+      <ion-item *ngIf="patientId">
+        <ion-label [routerLink]="['/view-medical-records', patientId]">Hồ sơ cá nhân</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tùy chỉnh</ion-label>
+      </ion-item>
+      <ion-item *ngIf="username" (click)="logout()">
+        <ion-label>Đăng xuất</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="openManageAppointments()">Lịch Hẹn</ion-button>      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title (click)="reload()">Elise</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="username">{{ username }}</ion-button>
+      <ion-button *ngIf="!username" (click)="login()">Login</ion-button>
+      <ion-button expand="block" (click)="booking()">Đặt Lịch</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content">
+  <swiper-container
+    #swiper
+    (swiper)="swiperReady()"
+    (slideChange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="{ clickable: true }"
+    class="hero-swiper" 
+    style="height: 100vh; max-height: 600px;"
+  >
+    <swiper-slide>
+      <div class="hero-slide">
+        <img src="assets/slider.jpg" alt="Doctor 1" class="hero-image">
+        <div class="hero-content">
+          <h1>We Provide <span class="highlight">Medical</span> Services That You Can <span class="highlight">Trust!</span></h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <ion-button color="primary">Get Appointment</ion-button>
+          <ion-button fill="outline">Learn More</ion-button>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="hero-slide">
+        <img src="assets/slider2.jpg" alt="Doctor 2" class="hero-image">
+        <div class="hero-content">
+          <h1>Your Health is Our Priority</h1>
+          <p>We are committed to providing the best medical services.</p>
+          <ion-button color="primary">Get Appointment</ion-button>
+          <ion-button fill="outline">Learn More</ion-button>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="hero-slide">
+        <img src="assets/slider3.jpg" alt="Doctor 3" class="hero-image">
+        <div class="hero-content">
+          <h1>Trust in Our Experience</h1>
+          <p>Providing expert care to our patients for over 20 years.</p>
+          <ion-button color="primary">Get Appointment</ion-button>
+          <ion-button fill="outline">Learn More</ion-button>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- Info Cards Section -->
+  <div class="info-cards">
+    <div class="card">
+      <h3>Emergency Cases</h3>
+      <p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>
+      <a href="#">LEARN MORE →</a>
+    </div>
+    <div class="card">
+      <h3>Doctors Timetable</h3>
+      <p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>
+      <a href="#">LEARN MORE →</a>
+    </div>
+    <div class="card">
+      <h3>Opening Hours</h3>
+      <p>Monday - Friday<br>8.00-20.00</p>
+      <p>Saturday<br>9.00-18.30</p>
+      <p>Monday - Thursday<br>9.00-15.00</p>
+      <a href="#">LEARN MORE →</a>
+    </div>
+  </div>
+
+
+
+  <div class="messenger-box" (click)="toggleNotifications()">
+    <ion-icon name="notifications-outline"></ion-icon>
+    <ion-badge *ngIf="unreadCount > 0" color="danger">{{ unreadCount }}</ion-badge>
+  </div>
+
+  <div class="notifications-panel" *ngIf="showNotifications">
+    <h3>Thông Báo</h3>
+    <ion-list>
+      <ion-item *ngFor="let notification of notifications">
+        <ion-label>{{ notification.message }}</ion-label>
+        <ion-button color="danger" (click)="deleteNotification(notification.id)">Delete</ion-button>
+      </ion-item>
+      
+      
+      <ion-item *ngIf="notifications.length === 0">
+        <ion-label>No notifications available.</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

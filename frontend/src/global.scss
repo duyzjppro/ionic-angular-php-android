@@ -1,0 +1,105 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+.ion-color-newbie1 {
+	--ion-color-base: var(--ion-color-newbie1);
+	--ion-color-base-rgb: var(--ion-color-newbie1-rgb);
+	--ion-color-contrast: var(--ion-color-newbie1-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-newbie1-contrast-rgb);
+	--ion-color-shade: var(--ion-color-newbie1-shade);
+	--ion-color-tint: var(--ion-color-newbie1-tint);
+}
+
+.ion-color-newbie {
+	--ion-color-base: var(--ion-color-newbie);
+	--ion-color-base-rgb: var(--ion-color-newbie-rgb);
+	--ion-color-contrast: var(--ion-color-newbie-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-newbie-contrast-rgb);
+	--ion-color-shade: var(--ion-color-newbie-shade);
+	--ion-color-tint: var(--ion-color-newbie-tint);
+}
+.login-modal {
+    --height: 40%; /* Chiều cao của modal là 50% */
+    --width: 50%; /* Độ rộng của modal là 70% */
+    --bottom: 0; /* Modal sẽ hiển thị ở phía dưới màn hình */
+    --left: 50%; /* Canh giữa theo chiều ngang */
+    --transform: translateX(-50%); /* Dịch chuyển modal để căn giữa theo chiều ngang */
+    --border-radius: 20px; /* Đường viền cong của modal */
+    --background: white; /* Màu nền của modal */
+}
+
+.login-modal .modal-wrapper {
+    height: var(--height); /* Sử dụng biến chiều cao */
+    width: var(--width); /* Sử dụng biến độ rộng */
+    bottom: var(--bottom); /* Sử dụng biến phía dưới màn hình */
+    left: var(--left); /* Sử dụng biến canh giữa theo chiều ngang */
+    transform: var(--transform); /* Sử dụng biến dịch chuyển */
+    position: fixed; /* Sử dụng vị trí cố định */
+    display: block;
+    border-radius: var(--border-radius); /* Sử dụng biến đường viền cong */
+    background: var(--background); /* Sử dụng biến màu nền */
+}
+.register-modal {
+    --height: 40%; /* Chiều cao của modal là 50% */
+    --width: 50%; /* Độ rộng của modal là 70% */
+    --bottom: 0; /* Modal sẽ hiển thị ở phía dưới màn hình */
+    --left: 50%; /* Canh giữa theo chiều ngang */
+    --transform: translateX(-50%); /* Dịch chuyển modal để căn giữa theo chiều ngang */
+    --border-radius: 20px; /* Đường viền cong của modal */
+    --background: white; /* Màu nền của modal */
+}
+.register-modal .modal-wrapper {
+    height: var(--height); /* Sử dụng biến chiều cao */
+    width: var(--width); /* Sử dụng biến độ rộng */
+    bottom: var(--bottom); /* Sử dụng biến phía dưới màn hình */
+    left: var(--left); /* Sử dụng biến canh giữa theo chiều ngang */
+    transform: var(--transform); /* Sử dụng biến dịch chuyển */
+    position: fixed; /* Sử dụng vị trí cố định */
+    display: block;
+    border-radius: var(--border-radius); /* Sử dụng biến đường viền cong */
+    background: var(--background); /* Sử dụng biến màu nền */
+}
+
+
+.newbie-input {
+    background: rgb(17, 17, 17);
+    --padding-start: 10px !important;
+    color: #191919;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.custom-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3;
+  }

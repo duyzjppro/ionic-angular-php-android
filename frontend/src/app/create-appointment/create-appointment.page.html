@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tạo Cuộc Hẹn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Chọn ngày -->
+  <ion-item>
+    <ion-label>Chọn Ngày</ion-label>
+    <ion-datetime 
+      displayFormat="DD/MM/YYYY" 
+      [(ngModel)]="newAppointment.appointment_date" 
+      [value]="currentDate" 
+      (ionChange)="loadClinicsAndTimeSlotsByDate()">
+    </ion-datetime>
+  </ion-item>
+  <!-- Chọn phòng khám -->
+  <ion-item>
+    <ion-label>Phòng khám</ion-label>
+    <ion-select [(ngModel)]="newAppointment.clinic_id">
+      <ion-select-option *ngFor="let clinic of clinics" [value]="clinic.id">
+        {{ clinic.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Chọn khung giờ -->
+  <ion-item>
+    <ion-label>Khung giờ</ion-label>
+    <ion-select [(ngModel)]="newAppointment.time_slot_id">
+      <ion-select-option *ngFor="let timeSlot of timeSlots" [value]="timeSlot.id">
+        {{ timeSlot.time }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Chọn bệnh nhân -->
+  <ion-item>
+    <ion-label>Bệnh nhân</ion-label>
+    <ion-select [(ngModel)]="newAppointment.patient_id">
+      <ion-select-option *ngFor="let patient of patients" [value]="patient.id">
+        {{ patient.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Button tạo cuộc hẹn -->
+  <ion-button expand="full" (click)="createAppointment()">Tạo Cuộc Hẹn</ion-button>
+</ion-content>

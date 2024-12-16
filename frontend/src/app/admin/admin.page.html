@@ -1,0 +1,291 @@
+<ion-app>
+  <!-- Split Pane -->
+  <ion-split-pane contentId="main-content">
+    <!-- Navigation Menu on the left -->
+    <ion-menu contentId="main-content" side="start" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>ELISE Hospital</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="menu-header">
+          <img src="assets/doctor1.jpg" alt="User Avatar" class="user-avatar">
+          <h2>Welcome Dr. {{ doctorName }}</h2>
+          <p>Chuyên khoa: {{ doctorSpecialty }}</p>
+        </div>
+        <ion-button *ngIf="doctorId" fill="clear" [routerLink]="['/doctor-schedule', doctorId]">
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          <ion-label>Lịch làm việc</ion-label>
+        </ion-button>
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label color="medium">TODAY REPORT</ion-label>
+            </ion-item>
+            <ion-item lines="none" class="report-item">
+              <div class="report-box">
+                <h3>16</h3>
+                <p>Patient</p>
+              </div>
+              <div class="report-box">
+                <h3>20</h3>
+                <p>Pending</p>
+              </div>
+              <div class="report-box">
+                <h3>04</h3>
+                <p>Visit</p>
+              </div>
+            </ion-item>
+          <ion-list-header color="medium">MAIN NAVIGATION</ion-list-header>
+
+          <!-- Dashboard -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="navigateToDashboard()" lines="none">
+              <ion-icon slot="start" name="home-outline"></ion-icon>
+              <ion-label>Dashboard</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Appointment -->
+<!-- Appointment -->
+<ion-item lines="none" (click)="toggleSection('appointment')">
+  <ion-icon slot="start" name="calendar-outline"></ion-icon>
+  <ion-label>Quản lý dịch vụ phòng khám</ion-label>
+  <ion-icon slot="end" [name]="isSectionExpanded('appointment') ? 'remove' : 'add'"></ion-icon>
+</ion-item>
+<ion-list *ngIf="isSectionExpanded('appointment')" lines="none">
+  <ion-item routerLink="/admin/clinics" routerDirection="root">
+    <ion-label>Quản lý phòng khám</ion-label>      
+  </ion-item>
+  <ion-item routerLink="/admin/shifts" routerDirection="root">
+    <ion-label>Quản lý ca làm việc</ion-label>
+  </ion-item>
+  <ion-item routerLink="/admin/clinic-management" routerDirection="root">
+    <ion-label>Danh sách các cuộc hẹn</ion-label>
+  </ion-item>
+  <ion-item routerLink="/admin/create-appointment" routerDirection="root">
+    <ion-label> Tạo lịch hẹn</ion-label>
+  </ion-item>
+  <ion-item routerLink="/admin/time-slots" routerDirection="root">
+    <ion-label>Quản lý móc thời gian cuộc hẹn</ion-label>
+  </ion-item>
+</ion-list>
+
+<!-- Doctors -->
+<ion-item lines="none" (click)="toggleSection('doctors')">
+  <ion-icon slot="start" name="medkit-outline"></ion-icon>
+  <ion-label>Quản lý danh sách bác sĩ</ion-label>
+  <ion-icon slot="end" [name]="isSectionExpanded('doctors') ? 'remove' : 'add'"></ion-icon>
+</ion-item>
+<ion-list *ngIf="isSectionExpanded('doctors')" lines="none">
+  <ion-item routerLink="/admin/doctor" routerDirection="root">
+    <ion-label>Danh sách bác sĩ</ion-label>
+  </ion-item>
+  <ion-item routerLink="/admin/create-doctor" routerDirection="root">
+    <ion-label>Thêm bác sĩ</ion-label>
+  </ion-item>
+</ion-list>
+
+<!-- Patients -->
+<ion-item lines="none" (click)="toggleSection('patients')">
+  <ion-icon slot="start" name="people-outline"></ion-icon>
+  <ion-label>Quản lý danh sách bệnh nhân</ion-label>
+  <ion-icon slot="end" [name]="isSectionExpanded('patients') ? 'remove' : 'add'"></ion-icon>
+</ion-item>
+<ion-list *ngIf="isSectionExpanded('patients')" lines="none">
+  <ion-item routerLink="/admin/patient" routerDirection="root">
+    <ion-label>Xem danh sách bệnh nhân</ion-label>
+  </ion-item>
+</ion-list>
+
+         <!-- user -->
+         <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/admin/user" routerDirection="root" lines="none">
+              <ion-icon slot="start" name="people-outline"></ion-icon>
+              <ion-label>Quản lý danh sách người dùng</ion-label>
+          </ion-item>
+      </ion-menu-toggle>
+          <!-- Reports -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/reports" routerDirection="root" lines="none">
+              <ion-icon slot="start" name="document-text-outline"></ion-icon>
+              <ion-label>Reports</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-list-header color="medium">Labels</ion-list-header>
+
+          <!-- Important -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none">
+              <ion-icon slot="start" name="alert-circle-outline" color="danger"></ion-icon>
+              <ion-label>Important</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Warning -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none">
+              <ion-icon slot="start" name="warning-outline" color="warning"></ion-icon>
+              <ion-label>Warning</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Information -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none">
+              <ion-icon slot="start" name="information-circle-outline" color="primary"></ion-icon>
+              <ion-label>Information</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <!-- Dashboard content on the right -->
+    <ion-router-outlet id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Dashboard</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="dashboard-content">
+          <!-- Stats -->
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3">
+                <ion-card>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="person-outline" color="primary" size="large"></ion-icon>
+                    <h3>27</h3>
+                    <p>New Patient</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="3">
+                <ion-card>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="medkit-outline" color="primary" size="large"></ion-icon>
+                    <h3>12</h3>
+                    <p>OPD Patient</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="3">
+                <ion-card>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="construct-outline" color="primary" size="large"></ion-icon>
+                    <h3>05</h3>
+                    <p>Today's Operations</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="3">
+                <ion-card>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="cash-outline" color="primary" size="large"></ion-icon>
+                    <h3>$3,540</h3>
+                    <p>Hospital Earning</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- Chart -->
+          <ion-card>
+            <ion-card-header>HOSPITAL SURVEY</ion-card-header>
+            <ion-card-content>
+              <ion-img src="assets/Line-chart-comparison.png"></ion-img>
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Info Cards -->
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ion-card>
+                  <ion-card-header>NEW PATIENT</ion-card-header>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="people-outline" color="danger"></ion-icon>
+                    <p>27 New Patient (24-Aug)</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="4">
+                <ion-card>
+                  <ion-card-header>OPD PATIENT</ion-card-header>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="medkit-outline" color="success"></ion-icon>
+                    <p>12 OPD Patient (24-Aug)</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="4">
+                <ion-card>
+                  <ion-card-header>TODAY'S OPERATIONS</ion-card-header>
+                  <ion-card-content>
+                    <ion-icon slot="start" name="construct-outline" color="warning"></ion-icon>
+                    <p>05 Operations (24-Aug)</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- Patient Info -->
+          <ion-card>
+            <ion-card-header>PATIENT INFORMATION</ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-label>IPD PATIENTS</ion-label>
+                    <p>18</p>
+                  </ion-col>
+                  <ion-col size="4">
+                    <ion-label>OPD PATIENTS</ion-label>
+                    <p>12</p>
+                  </ion-col>
+                  <ion-col size="4">
+                    <ion-label>DISCHARGED PATIENTS</ion-label>
+                    <p>10</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Miscellaneous Info -->
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <ion-card>
+                  <ion-card-header>PAYMENTS</ion-card-header>
+                  <ion-card-content>
+                    <ion-label>Total Amount: $5,000</ion-label>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card>
+                  <ion-card-header>REPORTS</ion-card-header>
+                  <ion-card-content>
+                    <ion-label>Monthly Reports: 20</ion-label>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- Bottom Buttons -->
+
+        </div>
+      </ion-content>
+    </ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Thêm Hồ Sơ Bệnh Án</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="uploadMedicalRecord()">
+    <ion-item>
+      <ion-label position="floating">Mã Sổ Khám Bệnh</ion-label>
+      <ion-input [(ngModel)]="patientRecordCode" name="patientRecordCode" required></ion-input>
+    </ion-item>
+
+    <div class="file-upload-container">
+      <input type="file" id="file-upload" (change)="onFileChange($event)" accept="image/*" hidden>
+      <label for="file-upload" class="file-upload-label">
+        <ion-icon name="cloud-upload-outline" size="large"></ion-icon>
+        <ion-img *ngIf="previewUrl" [src]="previewUrl" alt="Medical Record Image Preview" class="preview-image"></ion-img>
+        <p *ngIf="!previewUrl">Nhấn để chọn ảnh</p>
+      </label>
+    </div>
+
+    <ion-button expand="full" type="submit" [disabled]="!selectedFile">Tải Lên</ion-button>
+  </form>
+</ion-content>

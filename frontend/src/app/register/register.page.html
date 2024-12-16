@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="regForm" (ngSubmit)="create()">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          placeholder="Username"
+          formControlName="username"
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="regForm.get('username').invalid && regForm.get('username').touched" class="error-message">
+        Username is required
+      </div>
+
+      <ion-item>
+        <ion-input
+          placeholder="Email"
+          formControlName="email"
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="regForm.get('email').invalid && regForm.get('email').touched" class="error-message">
+        Enter a valid email
+      </div>
+
+      <ion-item>
+        <ion-input
+          placeholder="Password"
+          
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="regForm.get('password').invalid && regForm.get('password').touched" class="error-message">
+        Password must contain at least one number, one lowercase and one uppercase letter, and at least 8 characters.
+      </div>
+    </ion-list>
+
+    <ion-button expand="full" type="submit">Register</ion-button>
+  </form>
+</ion-content>

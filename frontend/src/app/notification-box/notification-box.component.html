@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Thông Báo</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list *ngIf="notifications.length > 0; else noNotifications">
+      <ion-item *ngFor="let notification of notifications">
+        <ion-label>
+          <p>{{ notification.message }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #noNotifications>
+      <p>Hiện tại không có thông báo nào.</p>
+    </ng-template>
+  </ion-card-content>
+</ion-card>

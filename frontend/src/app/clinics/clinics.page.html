@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quản Lý Phòng Khám</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Chọn Ngày</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ngày</ion-label>
+        <ion-datetime display-format="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="loadClinics()"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Thêm Phòng Khám</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Tên Phòng Khám</ion-label>
+        <ion-input [(ngModel)]="newClinicName"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="createClinic()">Thêm Phòng Khám</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="clinics.length > 0">
+    <ion-card-header>
+      <ion-card-title>Danh Sách Phòng Khám</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let clinic of clinics">
+          <ion-label>
+            <h2>{{ clinic.name }}</h2>
+            <p>Ngày Tạo: {{ clinic.creation_date }}</p>
+          </ion-label>
+          <ion-button color="primary" (click)="updateClinic(clinic.id)">Cập Nhật</ion-button>
+          <ion-button color="danger" (click)="deleteClinic(clinic.id)">Xóa</ion-button>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

@@ -1,0 +1,58 @@
+.input{
+    font-size: 300;
+}
+ion-item{
+    --background:'#f1f1f1',
+    border-radius: 10px;
+    margin-bottom: 16px; 
+}
+
+.header{
+    margin-top: 100px;
+    margin-bottom: 80px;
+    text-align: center;
+    .subTitle{
+        color: gray;
+        font-size: 0.9rem;
+    }
+    title{
+        font-size: 2rem;
+    }
+}
+.signinLink{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-content: center;
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    right: 0;
+
+    p{
+        font-size: 0.9rem;
+
+    }
+    a{
+        text-decoration: none;
+    }
+}
+.signinLink {
+    text-align: center; /* Canh giữa nội dung */
+  }
+  
+  .newbie {
+    font-size: 16px; /* Kích thước văn bản */
+    font-weight: bold; /* Độ đậm của văn bản */
+  }
+  
+  .member-link {
+    color: #007bff; /* Màu chữ của liên kết */
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+  }
+  
+  .member-link:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột qua liên kết */
+  }

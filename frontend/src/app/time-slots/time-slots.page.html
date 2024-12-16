@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quản Lý Khung thời gian hẹn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Chọn Ngày</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ngày</ion-label>
+        <ion-datetime display-format="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="loadTimeSlots()"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="timeSlots.length > 0">
+    <ion-card-header>
+      <ion-card-title>Danh Sách Khung Thời Gian</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let slot of timeSlots">
+          <ion-label>
+            <h2>{{ slot.time }}</h2>
+            <p>Ngày: {{ slot.date }}</p>
+          </ion-label>
+          <ion-button color="primary" (click)="editTimeSlot(slot)">Sửa</ion-button>
+          <ion-button color="danger" (click)="deleteTimeSlot(slot.id)">Xóa</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- Form để nhập hoặc chỉnh sửa Time Slot -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ isEditMode ? 'Cập Nhật Time Slot' : 'Thêm Time Slot' }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Thời Gian (HH:MM:SS)</ion-label>
+        <ion-input type="time" [(ngModel)]="newTime"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="isEditMode ? updateTimeSlot() : createTimeSlot()">
+        {{ isEditMode ? 'Cập Nhật' : 'Thêm' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  

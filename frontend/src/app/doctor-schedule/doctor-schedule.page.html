@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lịch trình làm việc</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Thông tin bác sĩ</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]="doctorImageUrl" *ngIf="doctorImageUrl" alt="Doctor Image">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ doctorName }}</h2>
+          <p>Chuyên khoa: {{ doctorSpecialty }}</p>
+          <p>Điện thoại: {{ doctorPhone }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Chọn ngày</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Ngày:</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" (ionChange)="onDateChange($event)"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Lịch làm việc</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngIf="shifts.length > 0; else noShifts">
+        <ion-item *ngFor="let shift of shifts">
+          <ion-label>
+            <h2>{{ shift.shift_date }}</h2>
+            <p>Ca làm việc: {{ shift.shift_period | titlecase }}</p>
+            <p>Phòng khám: {{ shift.clinic_name }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ng-template #noShifts>
+        <ion-item>
+          <ion-label>Không có ca làm việc nào.</ion-label>
+        </ion-item>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

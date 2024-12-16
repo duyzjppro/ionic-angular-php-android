@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Patient</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="updatePatient()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Patient Name</ion-label>
+        <ion-input [(ngModel)]="patient.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Age</ion-label>
+        <ion-input type="number" [(ngModel)]="patient.age" name="age" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Gender</ion-label>
+        <ion-input [(ngModel)]="patient.gender" name="gender" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input [(ngModel)]="patient.phone" name="phone" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input [(ngModel)]="patient.city" name="city" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Image</ion-label>
+        <input type="file" (change)="onFileSelected($event)" />
+        <img *ngIf="patient.image_url" [src]="patient.image_url" alt="Patient Image" width="100">
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" type="submit">Update Patient</ion-button>
+  </form>
+</ion-content>

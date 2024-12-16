@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quản lý phòng khám</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Date Picker -->
+  <ion-item>
+    <ion-label position="stacked">Chọn ngày</ion-label>
+    <ion-datetime
+      [(ngModel)]="selectedDate"
+      (ionChange)="loadAppointments()"
+      displayFormat="DD/MM/YYYY"
+      pickerFormat="DD/MM/YYYY"
+    ></ion-datetime>
+  </ion-item>
+
+  <!-- Search Bar -->
+  <ion-item>
+    <ion-label position="stacked">Tìm kiếm theo tên phòng</ion-label>
+    <ion-input
+      [(ngModel)]="searchTerm"
+      (ionChange)="loadAppointments()"
+      placeholder="Nhập tên phòng khám"
+    ></ion-input>
+  </ion-item>
+
+  <!-- Appointment List -->
+  <ion-list *ngIf="appointments.length > 0">
+    <ion-item *ngFor="let appointment of appointments">
+      <ion-label>
+        <h2>{{ appointment.clinic_name }}</h2>
+        <p>Bệnh nhân: {{ appointment.patient_name }}</p>
+        <p>Thời gian: {{ appointment.time_slot }}</p>
+        <p>Ngày khám: {{ appointment.appointment_date | date: 'dd/MM/yyyy' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="appointments.length === 0">
+    <ion-label>
+      Không tìm thấy cuộc hẹn nào.
+    </ion-label>
+  </ion-item>
+</ion-content>

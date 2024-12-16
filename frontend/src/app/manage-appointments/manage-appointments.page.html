@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Appointments</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Hiển thị từng cuộc hẹn -->
+  <ion-card *ngFor="let appointment of appointments">
+    <ion-card-header>
+      <ion-card-title>{{ appointment.clinic_name }} - {{ appointment.time }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button color="danger" (click)="cancelAppointment(appointment.appointment_id)">
+        Hủy Lịch Hẹn
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

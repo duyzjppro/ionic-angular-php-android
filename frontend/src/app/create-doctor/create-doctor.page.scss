@@ -1,0 +1,75 @@
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 16px;
+}
+
+.file-upload {
+  border: 2px dashed var(--ion-color-medium);
+  border-radius: 4px;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  ion-label {
+    color: var(--ion-color-medium);
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+
+  ion-button {
+    flex: 1;
+  }
+}
+
+.file-upload-container {
+  width: 100%;
+  border: 2px dashed #ddd;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.file-upload-label ion-icon {
+  font-size: 48px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.file-upload-label p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #888;
+}
+
+.preview-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+}

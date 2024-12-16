@@ -1,0 +1,46 @@
+<ion-content class="ion-padding">
+  <form (ngSubmit)="createPatientProfile()">
+    <h2>Tạo Hồ Sơ Bệnh Nhân</h2>
+
+    <ion-item>
+      <ion-label position="floating">Tên</ion-label>
+      <ion-input [(ngModel)]="name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tuổi</ion-label>
+      <ion-input [(ngModel)]="age" name="age" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Giới tính</ion-label>
+      <ion-select [(ngModel)]="gender" name="gender" required>
+        <ion-select-option value="male">Nam</ion-select-option>
+        <ion-select-option value="female">Nữ</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Số điện thoại</ion-label>
+      <ion-input [(ngModel)]="phone" name="phone" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Thành phố</ion-label>
+      <ion-input [(ngModel)]="city" name="city" required></ion-input>
+    </ion-item>
+
+    <!-- Phần upload hình ảnh -->
+    <ion-item>
+      <ion-label>Chọn Hình Ảnh</ion-label>
+      <ion-button expand="block" (click)="fileInput.click()">Chọn Ảnh</ion-button>
+      <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+
+    </ion-item>
+
+    <p *ngIf="selectedFile">Tệp đã chọn: {{ selectedFile.name }}</p>
+
+    <!-- Nút tạo hồ sơ -->
+    <ion-button expand="full" type="submit" [attr.aria-hidden]="null">Tạo Hồ Sơ</ion-button>
+  </form>
+</ion-content>

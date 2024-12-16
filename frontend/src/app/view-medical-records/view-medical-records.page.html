@@ -1,0 +1,36 @@
+<ion-content class="ion-padding">
+  <h2 class="page-title">Danh Sách Hồ Sơ Bệnh Án</h2>
+
+  <ion-list *ngIf="medicalRecords.length > 0; else noRecords">
+    <ion-item *ngFor="let record of medicalRecords" class="record-item">
+      <ion-label class="record-label">
+        <h3 class="record-title">Mã Sổ Khám Bệnh: {{ record.patient_record_code }}</h3>
+        <p class="record-date">Ngày tạo: {{ record.created_at | date: 'dd/MM/yyyy HH:mm' }}</p>
+      </ion-label>
+
+      <div class="record-image-wrapper">
+        <ion-img [src]="'http://192.168.1.31/medic1/backend/' + record.image_url" alt="Medical Record Image" class="record-image"></ion-img>
+      </div>
+
+      <!-- Single Upload Button per record to open file picker -->
+      <ion-button expand="full" color="primary" (click)="openFilePicker(record)">
+        Tải lên hình ảnh mới
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Hidden file input -->
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+
+  <!-- Message if no records are available -->
+  <ng-template #noRecords>
+    <ion-text color="medium" class="no-records-message">
+      Không có hồ sơ bệnh án.
+    </ion-text>
+
+    <!-- Button to navigate to the page for entering medical records -->
+    <ion-button expand="full" color="secondary" [routerLink]="['/medical-records', patientId]">
+      Nhập Dữ Liệu Hồ Sơ
+    </ion-button>
+  </ng-template>
+</ion-content>

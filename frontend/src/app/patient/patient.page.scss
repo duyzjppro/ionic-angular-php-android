@@ -1,0 +1,110 @@
+ion-content {
+    --background: #f4f5f8;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  p {
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .doctor-card {
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    height: 100%; // Ensure all cards have the same height
+  
+    ion-card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  
+    ion-avatar {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+    }
+  
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  
+    .specialty {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  
+    .website {
+      color: #3880ff;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+  
+    .address {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+      flex-grow: 1; // Allow address to grow and push button to bottom
+    }
+  
+    ion-button {
+      margin-bottom: 16px;
+    }
+  
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      
+      ion-icon {
+        font-size: 20px;
+        margin: 0 8px;
+        color: #666;
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    ion-col {
+      --ion-grid-column-padding: 5px;
+    }
+  
+    .doctor-card {
+      ion-avatar {
+        width: 60px;
+        height: 60px;
+      }
+  
+      h2 {
+        font-size: 16px;
+      }
+  
+      .specialty, .website {
+        font-size: 12px;
+      }
+  
+      .address {
+        font-size: 10px;
+      }
+  
+      ion-button {
+        font-size: 12px;
+      }
+  
+      .social-icons ion-icon {
+        font-size: 18px;
+      }
+    }
+  }

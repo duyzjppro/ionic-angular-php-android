@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Thông tin bác sĩ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <h1>Chỉnh sửa thông tin bác sĩ</h1>
+
+    <ion-item>
+      <ion-label position="stacked">Họ và Tên</ion-label>
+      <ion-input [(ngModel)]="doctor.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Chuyên Ngành</ion-label>
+      <ion-input [(ngModel)]="doctor.specialty"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Số điện thoại</ion-label>
+      <ion-input [(ngModel)]="doctor.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Hình Ảnh</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*">
+    </ion-item>
+
+    <ion-img *ngIf="doctor.image_url" (ionError)="onImageError()" alt="Doctor Image"></ion-img>
+
+    <ion-button expand="full" (click)="updatePatient()">Cập Nhật</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,38 @@
+.appointment-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu không đủ không gian */
+  max-width: 100%;
+  padding: 20px;
+}
+
+.description-card, .appointment-container {
+  width: 100%; /* Mặc định chiếm toàn bộ chiều ngang trên thiết bị nhỏ */
+  max-width: 500px; /* Đảm bảo không vượt quá kích thước lớn */
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng của phần tử */
+}
+
+@media (min-width: 768px) {
+  .description-card, .appointment-container {
+    width: 48%; /* Trên thiết bị lớn hơn, mỗi phần tử chiếm khoảng 50% */
+  }
+}
+
+ion-item, ion-datetime {
+  width: 100%;
+}
+
+ion-button {
+  width: 100%;
+}
+
+ion-grid {
+  width: 100%;
+}

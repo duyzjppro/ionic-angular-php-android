@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Danh sách bác sĩ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <h1>Danh sách bác sĩ</h1>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="4" *ngFor="let doctor of doctors">
+          <ion-card>
+            <ion-card-content>
+              <div class="doctor-info">
+                <ion-avatar>
+                  <ion-img *ngIf="doctor.image_url" [src]="doctor.image_url" (ionError)="onImageError()" alt="Doctor Image"></ion-img>
+                </ion-avatar>
+                <div class="doctor-details">
+                  <h2>Tên: {{ doctor.name }}</h2>
+                  <p>Chuyên Ngành: {{ doctor.specialty }}</p>
+                  <p>Số điện thoại: {{ doctor.phone }}</p>
+                </div>
+              </div>
+              <ion-button fill="clear" [routerLink]="['/edit-doctor', doctor.id]">
+                <ion-icon name="create-outline"></ion-icon> Edit
+              </ion-button>
+              <ion-button fill="clear" color="danger" (click)="confirmDeleteDoctor(doctor.id)">
+                <ion-icon name="trash-outline"></ion-icon> Delete
+              </ion-button>
+            </ion-card-content>
+            
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,70 @@
+// Center align the page title
+.page-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-bottom: 16px;
+}
+
+// Style for each record item
+.record-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+// Style for the label that contains the record details
+.record-label {
+  text-align: center;
+  margin-bottom: 8px;
+
+  h3.record-title {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p.record-date {
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+// Style for the image wrapper to center the image and add responsiveness
+.record-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+// Responsive image styling
+.record-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+// Center align text when there are no records
+.no-records-message {
+  display: block;
+  text-align: center;
+  font-size: 1em;
+  color: #888;
+  margin-top: 20px;
+}
+
+// Style for the upload button outside the list
+ion-button {
+  margin-top: 16px;
+  font-size: 0.9em;
+  padding: 8px;
+}

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quản Lý Ca Làm Việc</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Ngày</ion-label>
+        <ion-datetime 
+          display-format="YYYY-MM-DD" 
+          [(ngModel)]="shiftDate" 
+          (ionChange)="getShiftByDay()">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ca Làm Việc</ion-label>
+        <ion-select [(ngModel)]="shiftPeriod">
+          <ion-select-option value="morning">Buổi sáng</ion-select-option>
+          <ion-select-option value="afternoon">Buổi chiều</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bác sĩ</ion-label>
+        <ion-select [(ngModel)]="doctorId">
+          <ion-select-option *ngFor="let doctor of doctors" [value]="doctor.id">
+            {{ doctor.name }} 
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phòng</ion-label>
+        <ion-select [(ngModel)]="clinicId">
+          <ion-select-option *ngFor="let clinic of clinics" [value]="clinic.id">
+            {{ clinic.name }} 
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="full" (click)="addShift()">Thêm Ca Làm Việc</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="shifts.length > 0">
+    <ion-item *ngFor="let shift of shifts">
+      Bác sĩ: {{ shift.doctor_name }} - Ca: {{ shift.shift_period }} - Phòng: {{ shift.clinic_name}}
+      <ion-button slot="end" (click)="editShift(shift)">Chỉnh sửa</ion-button>
+      <ion-button slot="end" color="danger" (click)="confirmDeleteShift(shift.id)">Xóa</ion-button>
+    </ion-item>
+  </ion-list>
+  
+  <!-- Form cập nhật -->
+  <ion-card *ngIf="editingShift">
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Ngày</ion-label>
+        <ion-datetime 
+          display-format="YYYY-MM-DD" 
+          [(ngModel)]="editingShift.shift_date">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ca Làm Việc</ion-label>
+        <ion-select [(ngModel)]="editingShift.shift_period">
+          <ion-select-option value="morning">Buổi sáng</ion-select-option>
+          <ion-select-option value="afternoon">Buổi chiều</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bác sĩ</ion-label>
+        <ion-select [(ngModel)]="editingShift.doctor_id">
+          <ion-select-option *ngFor="let doctor of doctors" [value]="doctor.id">
+            {{ doctor.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phòng</ion-label>
+        <ion-select [(ngModel)]="editingShift.clinic_id">
+          <ion-select-option *ngFor="let clinic of clinics" [value]="clinic.id">
+            {{ clinic.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="full" color="primary" (click)="updateShift()">Cập nhật</ion-button>
+      <ion-button expand="full" color="medium" (click)="cancelEdit()">Hủy</ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="shifts.length === 0">
+    <ion-card-content>Không có ca làm việc nào vào ngày này.</ion-card-content>
+  </ion-card>
+</ion-content>

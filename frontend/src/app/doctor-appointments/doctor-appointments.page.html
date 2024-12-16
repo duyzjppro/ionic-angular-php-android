@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Doctor Appointments</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="loadAppointments(selectedDate)"></ion-datetime>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let appointment of appointments">
+      <ion-label>
+        <h2>{{ appointment.patient_name }}</h2>
+        <p>Số Thứ Tự: {{ appointment.queue_number }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="loadAppointments(selectedDate)">Danh Sách Đăng Ký Khám Bệnh</ion-button>
+</ion-content>

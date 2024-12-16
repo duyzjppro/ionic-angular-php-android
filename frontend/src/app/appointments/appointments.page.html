@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Đăng Ký Lịch Khám</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title (click)="booking()">Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <!-- Wrapper để căn giữa nội dung -->
+  <div class="appointment-wrapper">
+    
+    <!-- Description Card -->
+    <div class="description-card">
+      <h2>Quy tắc khi đăng ký lịch khám</h2>
+      <h3>Lịch khám sẽ nhắc nhở trước 30 phút mỗi cuộc hẹn(Hãy lưu ý thông báo ở ứng dụng)</h3>
+      <p><ion-icon name="time-outline"></ion-icon> Hãy luôn có mặt trước 30 phút </p>
+      <p><ion-icon name="videocam-outline"></ion-icon> Ứng dụng có thông báo thời gian địa điểm cụ thể.</p>
+
+      <h3>Các Lưu ý Quan Trọng</h3>
+      <p> Hãy chú ý điểm này để chúng tôi có thể phục vụ bạn một cách tốt nhất</p>
+      <ul>
+        <li><strong>Chính xác và đầy đủ thông tin cá nhân</strong>: Khi đăng ký lịch khám, vui lòng cung cấp chính xác họ tên, số điện thoại và thông tin liên hệ để nhận được nhắc nhở kịp thời..</li>
+        <li><strong>Chính sách hủy hẹn</strong>: Nếu bạn không thể đến đúng giờ hoặc cần hủy hẹn, hãy thông báo với bệnh viện ít nhất 24 giờ trước giờ hẹn để không ảnh hưởng đến lịch khám.</li>
+        <li><strong>Cập nhật thông tin bảo hiểm</strong>: Đảm bảo thông tin bảo hiểm của bạn đã được cập nhật đầy đủ trong hồ sơ cá nhân trên ứng dụng để hỗ trợ cho quy trình khám chữa bệnh.</li>
+      </ul>
+
+      <h3>Yêu Cầu Kỹ Thuật cho Ứng Dụng Đặt Lịch:</h3>
+      <p>Để trải nghiệm đặt lịch và nhận thông báo tốt nhất, hãy sử dụng phiên bản ứng dụng mới nhất trên điện thoại di động.</p>
+      <p><strong>Kiểm tra thông báo ứng dụng: Đảm bảo rằng bạn đã bật thông báo cho ứng dụng để không bỏ lỡ bất kỳ cập nhật nào về lịch khám hoặc các thông báo quan trọng từ bệnh viện.</strong></p>
+    </div>
+
+    <!-- Appointment Date & Time Selector -->
+    <div class="appointment-container">
+      <!-- Date Picker -->
+      <ion-item>
+        <ion-label position="stacked">Select a Date & Time</ion-label>
+        <ion-datetime
+          [(ngModel)]="selectedDate"
+          (ionChange)="loadClinicsAndTimeSlots()"
+          displayFormat="DD/MM/YYYY"
+          pickerFormat="DD/MM/YYYY"
+        ></ion-datetime>
+      </ion-item>
+
+      <!-- Time Zone Information -->
+
+      <!-- Clinic List and Time Slots -->
+      <ion-card *ngFor="let clinic of clinics">
+        <ion-card-header>
+          <ion-card-title>{{ clinic.name }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <!-- Time Slots in a grid layout -->
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" size-md="3" *ngFor="let timeSlot of clinic.timeSlots">
+                <ion-button
+                  expand="block"
+                  color="primary"
+                  [disabled]="!timeSlot.available"
+                  (click)="bookTimeSlot(clinic.id, timeSlot.id)"
+                >
+                  {{ timeSlot.time }}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,43 @@
+.calendar-container {
+    margin: 20px;
+  
+    ion-grid {
+      text-align: center;
+  
+      h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+  
+      ion-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+  
+        &.active-date {
+          background-color: #007aff;
+          color: #fff;
+          border-radius: 50%;
+        }
+      }
+  
+      ion-button {
+        --padding-start: 0;
+        --padding-end: 0;
+      }
+    }
+  }
+  
+  .time-slot-container {
+    margin-top: 20px;
+  
+    ion-item {
+      --border-color: #e0e0e0;
+      --padding-start: 20px;
+      --padding-end: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 1.2rem;
+    }
+  }
+  

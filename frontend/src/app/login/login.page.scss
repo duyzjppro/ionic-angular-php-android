@@ -1,0 +1,78 @@
+.input{
+    font-size: 300;
+    border-radius: 10px;
+    padding: 10px;
+  
+
+}
+.form-field {
+    margin-bottom: 15px;
+  }
+ion-item{
+    --background:'#f1f1f1',
+    border-radius: 10px;
+    margin-bottom: 16px; 
+}
+.title {
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.title p {
+    display: flex;
+    margin-top: 0 !important;
+    
+}
+.header{
+    margin-top: 100px;
+    margin-bottom: 80px;
+    text-align: center;
+    .subTitle{
+        display:flex;
+        color: gray;
+        font-size: 0.9rem;
+    }
+    title{
+        font-size: 2rem;
+    }
+}
+.register{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-content: center;
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    bottom: 90px;
+    width: 80%;
+    right: 0;
+
+    p{
+        font-size: 0.9rem;
+
+    }
+    a{
+        text-decoration: none;
+    }
+}
+.small-button {
+    font-size: 1px;
+    padding: 5px 1px;
+  }
+
+.forgotpassword{
+    display: flex;
+    justify-content: flex-end;
+    a{
+        font-weight: 400;
+        font-size: 0.8rem;
+        text-decoration: none;
+    }
+}
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
