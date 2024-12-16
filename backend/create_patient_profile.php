@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_file)) {
             // Lưu đường dẫn tương đối cho DB và đường dẫn đầy đủ cho client
             $image_url = 'uploads/' . $file_name;
-            $response['image_url'] = 'http://192.168.1.18/medic1/backend/' . $image_url;
+            $response['image_url'] = 'http://x.x.x.x/medic1/backend/' . $image_url;
         } else {
             $response['message'] = 'Không thể upload hình ảnh.';
             echo json_encode($response);
